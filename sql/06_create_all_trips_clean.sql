@@ -1,6 +1,6 @@
 CREATE OR REPLACE TABLE `project-41803cbf-8216-4676-9e2.cyclistic.all_trips_clean` AS 
 SELECT DISTINCT
-  -- colunas originais que vamos usar
+  -- original columns used in the analysis
   ride_id,
   rideable_type,
   member_casual,
@@ -10,7 +10,7 @@ SELECT DISTINCT
   end_station_name,
   start_lat, start_lng, end_lat, end_lng,
 
-  -- colunas novas (o equivalente às colunas que você criou no Excel)
+  -- derived columns
   TIMESTAMP_DIFF(ended_at, started_at, SECOND) AS ride_length_sec,
   ROUND(TIMESTAMP_DIFF(ended_at, started_at, SECOND) /60 ) AS ride_minutes,
   EXTRACT(DAYOFWEEK FROM started_at) AS day_of_week,
